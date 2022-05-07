@@ -7,6 +7,10 @@
             <div class="row">
                 <div class="col-auto">
 
+                @if(isset($type->html_type) && $type->html_type == 'hidden')
+                    Nothing to see here! :)
+                @else
+
                     This is a {{ $type->friendly_name }} field type
 
                     <{{ $type->html_tag_name }}
@@ -14,6 +18,7 @@
                         type="{{ $type->html_type }}"
                     @endisset
                     name="{{ $type->slug }}"
+                    class="form-control"
                     >
 
                     @if($type->allow_multiple_options && $type->html_tag_name == 'select')
@@ -35,9 +40,11 @@
                         type="{{ $type->html_type }}"
                         @endisset
                         name="{{ $type->slug }}"
+                        class="form-control"
                         >
 
                     @endif
+                @endif
 
                 </div>
             </div>
